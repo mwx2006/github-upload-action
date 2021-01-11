@@ -43,7 +43,7 @@ async function uploadAll() {
     const remotePath = path.posix.join(
       // `remotePath` can not start with `/`
       inputRemoteDir.replace(/^\//, ''),
-      path.relative(localDir, curPath)
+      path.posix.relative(localDir, curPath)
     )
 
     console.log(`Upload ${curPath} to ${remotePath}`)
