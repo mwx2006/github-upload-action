@@ -45,7 +45,7 @@ async function uploadAll() {
       inputRemoteDir.replace(/^\//, ''),
       path.posix.relative(localDir, curPath)
     )
-     val xremotePath=remotePath.replace("\\","/")
+     val xremotePath=String(remotePath).replace("\\","/")
     console.log(`Upload ${curPath} to ${remotePath.replace("\\","/")}`)
     const base64Cotent = fs.readFileSync(curPath, {
       encoding: 'base64'
