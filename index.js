@@ -40,11 +40,11 @@ core.debug(`filePaths: ${filePaths}`)
 async function uploadAll() {
   for (let index = 0; index < filePaths.length; index++) {
     const curPath = filePaths[index]
-    const remotePath = path.join(
+    const remotePath = path.posix.join(
       // `remotePath` can not start with `/`
       inputRemoteDir.replace(/^\//, ''),
       path.relative(localDir, curPath)
-    ).replace("\\","/")
+    )
 
     console.log(`Upload ${curPath} to ${remotePath}`)
     const base64Cotent = fs.readFileSync(curPath, {
