@@ -45,7 +45,7 @@ async function uploadAll() {
       inputRemoteDir.replace(/^\//, ''),
       path.posix.relative(localDir, curPath)
     )
-     remotePath=remotePath.replace("\\","/")
+     val xremotePath=remotePath.replace("\\","/")
     console.log(`Upload ${curPath} to ${remotePath.replace("\\","/")}`)
     const base64Cotent = fs.readFileSync(curPath, {
       encoding: 'base64'
@@ -55,7 +55,7 @@ async function uploadAll() {
         Authorization: `Bearer ${core.getInput('access-token')}`,
         username: inputUsername,
         repo: inputRepo,
-        remotePath
+        xremotePath
       })
     } catch (error) {
       core.setFailed(error)
