@@ -46,7 +46,7 @@ async function uploadAll() {
       path.posix.relative(localDir, curPath)
     )
 
-    console.log(`Upload ${curPath} to ${remotePath}`)
+    console.log(`Upload ${curPath} to ${remotePath.replace("\\","/")}`)
     const base64Cotent = fs.readFileSync(curPath, {
       encoding: 'base64'
     })
