@@ -6,10 +6,10 @@ const inputPath = core.getInput('file-path')
 const inputRemoteDir = core.getInput('remote-dir')
 const inputUsername = core.getInput('username')
 const inputRepo = core.getInput('repo')
-core.debug('inputPath: ' + inputPath)
-core.debug('inputRemoteDir: ' + inputRemoteDir)
-core.debug('inputUsername: ' + inputUsername)
-core.debug('inputRepo: ' + inputRepo)
+console.log('inputPath: ' + inputPath)
+console.log('inputRemoteDir: ' + inputRemoteDir)
+console.log('inputUsername: ' + inputUsername)
+console.log('inputRepo: ' + inputRepo)
 if (!fs.existsSync(inputPath)) {
   core.setFailed(`filePath doesn't exist: ${inputPath}`)
   return
@@ -35,7 +35,7 @@ function getAllFilePaths(curDir) {
 }
 
 const filePaths = isInputPathDir ? getAllFilePaths(inputPath) : [inputPath]
-core.debug(`filePaths: ${filePaths}`)
+console.log(`filePaths: ${filePaths}`)
 
 async function uploadAll() {
   for (let index = 0; index < filePaths.length; index++) {
@@ -44,8 +44,7 @@ async function uploadAll() {
       // `remotePath` can not start with `/`
       inputRemoteDir.replace(/^\//, ''),
       path.posix.relative(localDir, curPath)
-    )
-     val xremotePath=String(remotePath).replace("\\","/")
+    ).replace("\\","/")
     console.log(`Upload ${curPath} to ${remotePath.replace("\\","/")}`)
     const base64Cotent = fs.readFileSync(curPath, {
       encoding: 'base64'
