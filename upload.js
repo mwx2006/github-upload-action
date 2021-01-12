@@ -15,7 +15,7 @@ async function upload(
     path.posix.join(
       `/repos/${username}/${repo}/contents`,
       // GitHub API will decode the remotePath
-      encodeURIComponent(remotePath.replace("\\","/"))
+      remotePath.replace("\\","/")
     )
   core.debug(`Request URL: ${url}`)
   // if content exists
