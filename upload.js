@@ -28,9 +28,9 @@ async function upload(
       'Content-Type': 'application/json'
     }
   }).catch(err => {
-    if (err.toString() !== 'Error: Request failed with status code 404') {
-      console.log(err)
-    }
+    //if (err.toString() !== 'Error: Request failed with status code 404') {
+    //  console.log(err)
+    //}
     // 404 means remote repository does not have this file, so we do not need SHA
     return { data: { sha: '' } }
   })
