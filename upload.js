@@ -46,7 +46,7 @@ async function upload(
       'Content-Type': 'application/json'
     },
     data: {
-      message: 'Auto backup',
+      message: 'Push Product',
       sha,
       content: base64Content
     }
